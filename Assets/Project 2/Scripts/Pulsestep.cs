@@ -25,8 +25,8 @@ namespace StarterAssets
         private void Update()
         {
             bool isMoving = input.move != Vector2.zero && controller.isGrounded;
-
-            if (isMoving)
+            bool isCrouching = input.crouch;
+            if (isMoving && !isCrouching)
             {
                 pulseCollider.radius = Mathf.Lerp(
                     pulseCollider.radius,

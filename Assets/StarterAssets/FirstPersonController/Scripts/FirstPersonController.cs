@@ -27,6 +27,7 @@ namespace StarterAssets
 		[Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
 		public float Gravity = -15.0f;
 
+		// Emad Ouedraogo
         [Header("Crouch")]
         public float crouchHeight = 1.0f;
         public float standingHeight = 2.0f;
