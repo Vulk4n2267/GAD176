@@ -63,8 +63,10 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
-		// cinemachine
-		private float _cinemachineTargetPitch;
+		[SerializeField] private GameObject messenger; // Reference to the messenger GameObject to check its name for crouch state
+
+        // cinemachine
+        private float _cinemachineTargetPitch;
 
 		// player
 		private float _speed;
@@ -84,6 +86,7 @@ namespace StarterAssets
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
         private bool _isCrouching;
+		public bool crouchCheck => !_isCrouching;
         private const float _threshold = 0.01f;
 
 		private bool IsCurrentDeviceMouse
@@ -230,6 +233,7 @@ namespace StarterAssets
             else
             {
                 Stand();
+                messenger.name = "Off"; // Set the name of the messenger GameObject to "Off" when standing
             }
         }
         private void Crouch()
@@ -242,6 +246,7 @@ namespace StarterAssets
             MoveSpeed = crouchSpeed;
 
             _isCrouching = true;
+			messenger.name = "On"; // Set the name of the messenger GameObject to "On" when crouching
         }
 
         private void Stand()
