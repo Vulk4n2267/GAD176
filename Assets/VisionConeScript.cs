@@ -6,6 +6,7 @@ public class VisionConeScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is create
     private bool crouchCheck; // Variable to store the crouch state of the player
     [SerializeField] private GameObject messenger;
+    [SerializeField] private GameObject cone;
     // && other.gameObject == player
     void Start()
 
@@ -19,17 +20,36 @@ public class VisionConeScript : MonoBehaviour
         if (messenger.name == "On")
         {
             crouchCheck = true;
-            Debug.Log("Player is crouching, vision cone reduced.");
+            //Debug.Log("Player is crouching, vision cone reduced.");
         }
+        else
+        {
+            crouchCheck = false;
+            //Debug.Log("Player is not crouching, vision cone normal.");
+        }
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-          /*  if ()
+       // Debug.Log("in cone");
+
+        if (crouchCheck == true)
         {
             // Reduce the size of the vision cone
-            transform.localScale = new Vector3(0.5f, 0.5f, 1f);
-            Debug.Log("Player is crouching, vision cone reduced.");
-        } */
+            //transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+            Debug.Log("Passed without Detection");
+
+        }
+        else
+        {
+            //Debug.Log("Player ");
+            Debug.Log("You have been spotted");
+
+        }
+
     }
+
+   
+
 }

@@ -29,6 +29,7 @@ public class MeleeAI : MonoBehaviour
     private AIState currentState;
     private float lastAttackTime;
     private Vector3 evadeTarget;
+    [SerializeField] private GameObject messenger;
 
     private void Awake()
     {
@@ -81,6 +82,11 @@ public class MeleeAI : MonoBehaviour
         {
             currentState = AIState.Attack;
         }
+        if (messenger.name == "On")
+        {
+            currentState = AIState.Evade;
+        }
+
     }
 
    
