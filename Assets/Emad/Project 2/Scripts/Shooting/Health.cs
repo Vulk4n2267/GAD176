@@ -6,6 +6,7 @@ public class Health : MonoBehaviour, IDamageable
 {
     
     [SerializeField] private float maxHealth = 100f;
+    public float MaxHealth => maxHealth;
     public float CurrentHealth { get; private set; }
 
     [SerializeField] private bool destroyOnDeath = true;
@@ -18,6 +19,7 @@ public class Health : MonoBehaviour, IDamageable
 
     private void Awake()
     {
+        
         CurrentHealth = maxHealth;
     }
 

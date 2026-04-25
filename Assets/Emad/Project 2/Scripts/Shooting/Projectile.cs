@@ -13,6 +13,9 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         IDamageable damageable = collision.collider.GetComponent<IDamageable>();
+        
+        if (collision.gameObject.CompareTag("itself"))
+            return;
 
         if (damageable != null)
         {

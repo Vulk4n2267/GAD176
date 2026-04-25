@@ -18,6 +18,11 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     [Header("References")]
     public Transform firePoint;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip fireSound;
+    public AudioClip reloadSound;
+
     // Weapon UI
     public int CurrentAmmo => currentAmmo;
     public int ReserveAmmo => reserveAmmo;
@@ -29,6 +34,8 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     protected virtual void Start()
     {
         currentAmmo = magazineSize;
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
     }
 
     public virtual void Fire()
@@ -46,6 +53,11 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
         nextFireTime = Time.time + 1f / fireRate;
 
         currentAmmo--;
+
+        // Fire sound effect
+        if (fireSound != null)
+            audioSource.PlayOneShot(fireSound);
+
         Shoot();
     }
 
@@ -61,6 +73,10 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     protected virtual IEnumerator ReloadRoutine()
     {
         isReloading = true;
+        
+        // Reload sound effect 
+        if (reloadSound != null)
+            audioSource.PlayOneShot(reloadSound);
 
         yield return new WaitForSeconds(reloadTime);
 
