@@ -11,6 +11,7 @@ public class Shotgun : WeaponBase
     {
         for (int i = 0; i < pelletCount; i++)
         {
+            //bullet spread
             Quaternion spread = Quaternion.Euler(
                 Random.Range(-spreadAngle, spreadAngle),
                 Random.Range(-spreadAngle, spreadAngle),

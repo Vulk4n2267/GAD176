@@ -10,6 +10,7 @@ public class WeaponUI : MonoBehaviour
 
     void Update()
     {
+        // UI organization
         WeaponBase weapon = weaponController.weapons[weaponController.currentIndex];
 
         if (weapon == null) return;

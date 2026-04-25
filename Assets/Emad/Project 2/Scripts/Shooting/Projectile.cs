@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         IDamageable damageable = collision.collider.GetComponent<IDamageable>();
-        
+        // Check tag to not interact with itself
         if (collision.gameObject.CompareTag("itself"))
             return;
 
