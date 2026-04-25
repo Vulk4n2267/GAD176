@@ -24,6 +24,7 @@ public class EnemyAI : MonoBehaviour
 
     private AIState currentState;
     private Vector3 evadeTarget;
+    [SerializeField] private GameObject messenger;
 
     private void Awake()
     {
@@ -76,6 +77,14 @@ public class EnemyAI : MonoBehaviour
         if (direction.magnitude <= attackRange)
         {
             currentState = AIState.Attack;
+        }
+
+        if (messenger.name == "On")
+        {
+            currentState = AIState.Evade;
+        }else
+        {
+            currentState = AIState.Chase;
         }
     }
 

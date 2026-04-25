@@ -86,6 +86,10 @@ public class MeleeAI : MonoBehaviour
         {
             currentState = AIState.Evade;
         }
+        else
+        {
+            currentState = AIState.Chase;
+        }
 
     }
 
